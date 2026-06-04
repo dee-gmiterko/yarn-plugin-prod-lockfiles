@@ -1,0 +1,42 @@
+{
+  "name": "yarn-plugin-prod-lockfiles",
+  "version": "1.0.0",
+  "description": "Yarn plugin to extract production-only lockfiles for Docker image builds",
+  "author": "Dee Gmiterko <d.gmiterko@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dee-gmiterko/yarn-plugin-prod-lockfiles.git"
+  },
+  "keywords": [
+    "yarn",
+    "yarn-plugin",
+    "lockfile",
+    "docker",
+    "monorepo",
+    "production"
+  ],
+  "files": [
+    "bundles/"
+  ],
+  "scripts": {
+    "build": "yarn builder build plugin",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.7",
+    "@vitest/ui": "^4.1.7",
+    "@yarnpkg/builder": "^4.2.3",
+    "@yarnpkg/cli": "^4.15.0",
+    "@yarnpkg/core": "^4.8.0",
+    "@yarnpkg/fslib": "^3.1.5",
+    "@yarnpkg/parsers": "^3.0.3",
+    "clipanion": "^4.0.0-rc.4",
+    "typanion": "^3.14.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
+  },
+  "packageManager": "yarn@4.16.0"
+}
