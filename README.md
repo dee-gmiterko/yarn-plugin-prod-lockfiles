@@ -1,6 +1,6 @@
 # yarn-plugin-prod-lockfiles
 
-Yarn Berry plugin that generates production-only `docker.yarn.lock` and `docker.package.json` for a focused workspace — useful for lean Docker image builds where devDependencies should not be installed.
+Yarn Berry plugin that generates production-only `docker.yarn.lock` and `docker.package.json` for a focused workspace — useful for lean Docker image builds where each image should install only dependencies needeed by the workspace package while perserving immutability of yarn.lock files allowing for --immutable.
 
 ![Monorepo workspace with yarn.lock running yarn prod-lockfile to produce separate package.json and yarn.lock for each output package](docs/prod-lockfile-diagram.png)
 
@@ -24,8 +24,7 @@ yarn prod-lockfile --focus <workspace> [--wrap-package-name <name>] [--workspace
 The workspace to generate the lockfile for, e.g. `@my-org/api`.
 
 **`--wrap-package-name`** _(optional)_
-When provided, generates a synthetic wrapper package that lists the focused workspace as its dependency. Useful when your packages are published to a (private) registry.
-When omitted, the focused workspace itself becomes the root entry.
+When provided, generates a synthetic wrapper package that lists the focused workspace as its dependency. Useful when your packages are published to a (private) registry. When omitted, the focused workspace package itself is stripped and used.
 
 **`--workspace-version`** _(optional, default: `1.0.0`)_
 Version used for workspace packages in the generated lockfile and package.json.
@@ -53,6 +52,8 @@ Generated `docker.package.json`:
   }
 }
 ```
+
+At this point we dont solve the problem of how are you gonna install other workspace packages in this mode, may require further work.
 
 ---
 
